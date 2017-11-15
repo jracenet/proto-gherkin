@@ -8,6 +8,7 @@ module.exports = function(defaults) {
     // Add options here
     codemirror: {
       modes: ['gherkin'],
+      keyMaps: ['sublime']
     }
   });
 
