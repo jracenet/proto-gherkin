@@ -6,6 +6,8 @@ export default Ember.Controller.extend({
 
   decodedContent: Ember.computed('model.content', function () {
     let res = atob(this.get('model.content'));
+
+    return res;
     let formattedLine;
 
     let txt = res.split("\n").map((line) => {

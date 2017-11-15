@@ -16,10 +16,6 @@
 
 <ul>
   {{#each files as |file|}}
-    <li>
-      {{#link-to 'file' (query-params path=file.path)}}
-        {{file.name}}
-      {{/link-to}}
-    </li>
+    {{file-browser/file model=file}}
   {{/each}}
 </ul>

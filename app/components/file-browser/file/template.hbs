@@ -1,0 +1,7 @@
+{{#if canBeEdited}}
+  {{#link-to 'file' (query-params path=model.path)}}
+    {{model.name}}
+  {{/link-to}}
+{{else}}
+  {{model.name}}
+{{/if}}

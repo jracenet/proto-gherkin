@@ -1,2 +1,3 @@
 {{#link-to 'directory' (query-params path=parentPath)}}Back to parent folder{{/link-to}}
-{{markdown-to-html decodedContent}}
+
+{{ivy-codemirror value=decodedContent options=(hash lineNumbers=true mode="gherkin")}}
