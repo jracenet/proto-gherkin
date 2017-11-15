@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('login');
 
   this.route('directory');
+  this.route('file');
 });
 
 export default Router;

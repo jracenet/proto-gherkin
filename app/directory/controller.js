@@ -13,11 +13,11 @@ export default Ember.Controller.extend({
 
     let splittedPath = this.get('path').split('/');
 
-    debugger
     if (splittedPath.length === 1) {
       return '';
     }
 
-    return splittedPath[splittedPath.length - 2];
+    splittedPath.pop();
+    return splittedPath.join("/");
   })
 });
