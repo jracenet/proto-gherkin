@@ -3,7 +3,7 @@
 API Key: {{config.apiKey}} <br />
 
 {{#if session.isAuthenticated}}
-    Authenticated
+    Authenticated  <button onclick={{action "logout"}}>Log Out</button>
 {{else}}
     Unauthenticated
 {{/if}}
