@@ -1,0 +1,21 @@
+{{#if path}}
+  {{#link-to 'directory' (query-params path=parentPath)}}
+    Go to parent
+  {{/link-to}}
+{{/if}}
+
+<ul>
+  {{#each directories as |dir|}}
+    <li>
+      {{#link-to 'directory' (query-params path=dir.path)}}
+        {{dir.name}}
+      {{/link-to}}
+    </li>
+  {{/each}}
+</ul>
+
+<ul>
+  {{#each files as |file|}}
+    <li>{{file.name}}</li>
+  {{/each}}
+</ul>
