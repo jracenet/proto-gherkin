@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   queryParams: ['path'],
   path: null,
   contentToSave: null,
+  commitContent: null,
   githubWrapper: Ember.inject.service(),
 
   decodedContent: Ember.computed('model.content', function () {
@@ -28,7 +29,7 @@ export default Ember.Controller.extend({
 
   actions: {
     saveFileNewContent() {
-      this.get('githubWrapper').postFileUpdate(this.get('model.path'), this.get('model.sha'), this.get('contentToSave'));
+      this.get('githubWrapper').postFileUpdate(this.get('model.path'), this.get('model.sha'), this.get('contentToSave'), this.get('commitContent'));
     }
   }
 });

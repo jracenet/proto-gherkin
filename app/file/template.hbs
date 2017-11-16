@@ -2,4 +2,6 @@
 
 {{ivy-codemirror value=decodedContent options=(hash lineNumbers=true mode="gherkin" keyMap="sublime") valueUpdated=(action (mut contentToSave))}}
 
+{{textarea value=commitContent placeholder="Type comment here..."}}
+
 <button onclick={{action 'saveFileNewContent'}}>Save</button>

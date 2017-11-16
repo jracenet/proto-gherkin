@@ -16,12 +16,15 @@ export default Ember.Service.extend({
     })
   },
 
-  postFileUpdate(filePath, fileSha, newContent) {
-    let encodedNewContent = btoa(newContent);
+  postFileUpdate(filePath, fileSha, newContent, comment) {
+    let encodedNewContent = btoa(newContent),
+        fileName = filePath.split("/").get('lastObject'),
+        commitComment = comment || `Update ${fileName} via gherkin-editor`;
+
     return this.get('githubAjax').put(`/repos/jracenet/hps-behat/contents/${filePath}`, {
       data: {
         "path": filePath,
-        "message": "Commit from gherkin-editor",
+        "message": commitComment,
         "content": encodedNewContent,
         "sha": fileSha
       }
