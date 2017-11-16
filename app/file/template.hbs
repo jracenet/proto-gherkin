@@ -1,3 +1,5 @@
 {{#link-to 'directory' (query-params path=parentPath)}}Back to parent folder{{/link-to}}
 
-{{ivy-codemirror value=decodedContent options=(hash lineNumbers=true mode="gherkin" keyMap="sublime")}}
+{{ivy-codemirror value=decodedContent options=(hash lineNumbers=true mode="gherkin" keyMap="sublime") valueUpdated=(action (mut contentToSave))}}
+
+<button onclick={{action 'saveFileNewContent'}}>Save</button>
