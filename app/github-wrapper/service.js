@@ -10,8 +10,13 @@ export default Ember.Service.extend({
     })
   },
 
-  getContents(path) {
-    return this.get('githubAjax').request(`/repos/jracenet/hps-behat/contents/${path}`).then((data) => {
+  getContents(path, ref) {
+    let fileVersion = ref || 'master';
+    return this.get('githubAjax').request(`/repos/jracenet/hps-behat/contents/${path}`, {
+      data: {
+        ref: fileVersion
+      }
+    }).then((data) => {
       return data;
     })
   },

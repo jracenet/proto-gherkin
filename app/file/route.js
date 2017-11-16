@@ -24,9 +24,15 @@ export default Ember.Route.extend({
 
    actions: {
      fetchVersionsOfFile(filePath) {
-      this.get('githubWrapper').getHistoryForFile(filePath).then((commits) => {
-        this.controller.set('commitsList', commits);
-      })
-     }
+       this.get('githubWrapper').getHistoryForFile(filePath).then((commits) => {
+          this.controller.set('commitsList', commits);
+        });
+      },
+
+      fetchVersionOfFile(filePath, sha) {
+        this.get('githubWrapper').getContents(filePath, sha).then((data) => {
+          this.controller.set('model', data);
+        });
+      }
    }
 });

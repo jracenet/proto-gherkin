@@ -36,6 +36,6 @@
   </div>
   <div class="col-md-3">
     <h2>Versions</h2>
-    {{file-browser/file/commits-explorer model=model loadCommitsAction=(route-action "fetchVersionsOfFile") commits=commitsList}}
+    {{file-browser/file/commits-explorer model=model loadCommitsAction=(route-action "fetchVersionsOfFile") fetchCommit=(route-action "fetchVersionOfFile") commits=commitsList}}
   </div>
 </div>

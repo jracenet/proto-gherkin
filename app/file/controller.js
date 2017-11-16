@@ -17,6 +17,10 @@ export default Ember.Controller.extend({
   },
 
   decodedContent: Ember.computed('model.content', function () {
+    if (Ember.isNone(this.get('model.content'))) {
+      return '';
+    }
+    
     let res = atob(this.get('model.content'));
     return res;
   }),

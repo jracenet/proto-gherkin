@@ -1,5 +1,5 @@
 <ul>
 {{#each commits as |commit|}}
-  <li>{{commit.sha}}</li>
+  <li><a href="#" {{action (action fetchCommit model.path commit.sha)}}>{{commit.sha}}</a></li>
 {{/each}}
 </ul>
