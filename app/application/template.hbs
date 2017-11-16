@@ -1,11 +1,27 @@
-API Key: {{config.apiKey}} <br />
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
 
-{{#if session.isAuthenticated}}
-    Authenticated  <button onclick={{action "logout"}}>Log Out</button>
-{{else}}
-    Unauthenticated
-{{/if}}
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>{{#link-to 'directory'}}Repo{{/link-to}}</li>
+      </ul>
 
-<hr />
+      {{#if session.isAuthenticated}}
+        <form class="navbar-form navbar-right">
+          <button onclick={{action "logout"}} class="btn btn-default">Log Out</button>
+        </form>
+      {{/if}}
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-{{outlet}}
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    {{outlet}}
+  </div>
+</div>

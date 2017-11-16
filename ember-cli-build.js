@@ -9,6 +9,12 @@ module.exports = function(defaults) {
     codemirror: {
       modes: ['gherkin'],
       keyMaps: ['sublime']
+    },
+
+    'ember-bootstrap': {
+      'bootstrapVersion': 3,
+      'importBootstrapFont': true,
+      'importBootstrapCSS': false
     }
   });
 

@@ -4,18 +4,19 @@
   {{/link-to}}
 {{/if}}
 
-<ul>
-  {{#each directories as |dir|}}
-    <li>
-      {{#link-to 'directory' (query-params path=dir.path)}}
-        {{dir.name}}
-      {{/link-to}}
-    </li>
-  {{/each}}
-</ul>
 
-<ul>
-  {{#each files as |file|}}
-    {{file-browser/file model=file}}
-  {{/each}}
-</ul>
+<table class="table">
+  <tbody>
+    {{#each directories as |dir|}}
+      <tr>
+        <td>{{#link-to 'directory' (query-params path=dir.path)}}
+          / {{dir.name}}
+        {{/link-to}}</td>
+      </tr>
+    {{/each}}
+
+    {{#each files as |file|}}
+      <tr>{{file-browser/file model=file tagName="td"}}</tr>
+    {{/each}}
+  </tbody>
+</table>
