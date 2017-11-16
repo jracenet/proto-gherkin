@@ -3,9 +3,17 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   queryParams: ['path'],
   path: null,
-  contentToSave: null,
-  commitContent: null,
   githubWrapper: Ember.inject.service(),
+  
+  contentToSave: null,
+  commitComment: null,
+  successMessage: null,
+
+  cleanIt() {
+    this.set('commitComment', null);
+    this.set('contentToSave', null);
+    this.set('successMessage', null);
+  },
 
   decodedContent: Ember.computed('model.content', function () {
     let res = atob(this.get('model.content'));
@@ -29,7 +37,10 @@ export default Ember.Controller.extend({
 
   actions: {
     saveFileNewContent() {
-      this.get('githubWrapper').postFileUpdate(this.get('model.path'), this.get('model.sha'), this.get('contentToSave'), this.get('commitContent'));
+      this.get('githubWrapper').postFileUpdate(this.get('model.path'), this.get('model.sha'), this.get('contentToSave'), this.get('commitComment')).then((updatedModel) => {
+        this.set('commitComment', '');
+        this.set('successMessage', 'Hell yeah! Commit done');
+      });
     }
   }
 });

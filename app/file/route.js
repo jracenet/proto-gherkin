@@ -13,5 +13,12 @@ export default Ember.Route.extend({
     return this.get('githubWrapper').getContents(params.path || '').then((data) => {
       return data;
     });
-  }
+  },
+
+  resetController(controller, isExiting, transition) {
+     if (isExiting) {
+       controller.set('path', null);
+       controller.cleanIt();
+     }
+   }
 });
