@@ -31,7 +31,7 @@ export default Ember.Route.extend({
 
       fetchVersionOfFile(filePath, sha) {
         this.get('githubWrapper').getContents(filePath, sha).then((data) => {
-          this.controller.set('model', data);
+          this.controller.set('previousModel', data);
         });
       }
    }
