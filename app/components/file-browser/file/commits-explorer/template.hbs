@@ -1,5 +1,15 @@
-<ul>
 {{#each commits as |commit|}}
-  <li><a href="#" {{action (action fetchCommit model.path commit.sha)}}>{{commit.sha}}</a></li>
+  {{log commit}}
+
+  <div class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object img-circle" width="32px" src={{commit.author.avatar_url}}>
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"><a href="#" {{action (action fetchCommit model.path commit.sha)}}>{{commit.sha}}</a></h4>
+      {{commit.commit.message}}
+    </div>
+  </div>
 {{/each}}
-</ul>
