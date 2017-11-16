@@ -6,28 +6,36 @@
 </div>
 
 <div class="row">
-  <h1>{{model.name}}</h1>
-  {{ivy-codemirror value=decodedContent options=(hash lineNumbers=true mode="gherkin" keyMap="sublime") valueUpdated=(action (mut contentToSave))}}
-</div>
-
-{{#if isContentUpdated}}
-  <div class="row">
-    <h3>Save modifications</h3>
-
-      <div class="form-group">
-        <label for="commentArea">Add a comment</label>
-        {{textarea id="commentArea" value=commitComment placeholder="Type comment here..." class="form-control"}}
-      </div>
-      <button onclick={{action 'saveFileNewContent'}} class="btn btn-primary">Save</button>
-
-  </div>
-
-  {{#if successMessage}}
+  <div class="col-md-9">
     <div class="row">
-      <hr />
-      <div class="alert alert-success alert-dismissible">
-        <strong>Hell yeah!</strong> {{successMessage}}
-      </div>
+      <h1>{{model.name}}</h1>
+      {{ivy-codemirror value=decodedContent options=(hash lineNumbers=true mode="gherkin" keyMap="sublime") valueUpdated=(action (mut contentToSave))}}
     </div>
-  {{/if}}
-{{/if}}
+
+    {{#if isContentUpdated}}
+      <div class="row">
+        <h3>Save modifications</h3>
+
+          <div class="form-group">
+            <label for="commentArea">Add a comment</label>
+            {{textarea id="commentArea" value=commitComment placeholder="Type comment here..." class="form-control"}}
+          </div>
+          <button onclick={{action 'saveFileNewContent'}} class="btn btn-primary">Save</button>
+
+      </div>
+
+      {{#if successMessage}}
+        <div class="row">
+          <hr />
+          <div class="alert alert-success alert-dismissible">
+            <strong>Hell yeah!</strong> {{successMessage}}
+          </div>
+        </div>
+      {{/if}}
+    {{/if}}
+  </div>
+  <div class="col-md-3">
+    <h2>Versions</h2>
+    {{file-browser/file/commits-explorer model=model loadCommitsAction=(route-action "fetchVersionsOfFile") commits=commitsList}}
+  </div>
+</div>

@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
     this.set('commitComment', null);
     this.set('contentToSave', null);
     this.set('successMessage', null);
+    this.get('commitsList').clear();
   },
 
   decodedContent: Ember.computed('model.content', function () {

@@ -29,6 +29,16 @@ export default Ember.Service.extend({
         "sha": fileSha
       }
     });
+  },
+
+  getHistoryForFile(filePath) {
+    return this.get('githubAjax').request(`/repos/jracenet/hps-behat/commits`, {
+      data: {
+        "path": filePath
+      }
+    }).then((data) => {
+      return data;
+    })
   }
 
 });
